@@ -44,13 +44,19 @@ void push(Itemp x,Pilha *P){
 
 int pop(Pilha *P){
 	if (pilhaVazia(P) == 1){
-		puts("Erro: Pilha Vazia!!");
+		puts("Erro: Pilha Vazia pop!!");
 		abort();
 	} else {
 		Itemp x = P->item[P->topo];
 		P->topo--;
 		return x;
 	}
+}
+
+char desempilha(Pilha *P){
+     while(pilhaVazia(P) == 0){
+          printf("%d \n", pop(P));
+    }
 }
 
 //void destroi(Pilha *Q){
@@ -68,9 +74,39 @@ void destroi(Pilha** p){
 char getTopo(Pilha *P){
 //int getTopo(Pilha *P){
     if (pilhaVazia(P) == 1) {
-        puts("Pilha Vazia!!");
-        abort();
+        puts("Erro: Pilha Vazia getTopo!!");
+		abort();
     } else {
         return P->item[P->topo];
     }
 }
+
+char *posfixa(char *e) {
+    static char s[256];
+    int j = 0;
+    Pilha *P = pilha(256);
+
+    for(int i = 0; e[i]; i++) {
+
+        if(isdigit(e[i])) {
+            s[j++] = e[i];
+        }
+
+        if(strchr("+*-/", e[i])) {
+            push(e[i], P);
+        }
+
+        if(e[i] == ')') {
+            s[j++] = pop(P);
+        }
+    }
+
+    s[j] = '\0';
+    destroi(&P);
+
+    return s;
+}
+
+
+
+

@@ -1,3 +1,12 @@
 .vscode/
-Atividade_Fabio/**
 Atividade_01/**
+Atividade_03/**
+Atividade_Fabio/**
+**/bin
+**/doxygen
+**/obj
+**/*.cbp
+**/*.depend
+**/*.layout
+**/*.o
+**/*.exe

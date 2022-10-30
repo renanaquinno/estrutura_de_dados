@@ -11,8 +11,7 @@ int main()
 
     Pilha *A = pilha(strlen(n));
 
-    for (int i = 0; n[i] != '\0'; i++)
-    {
+    for (int i = 0; n[i] != '\0'; i++){
 
         if (pilhaVazia(A))
         {
